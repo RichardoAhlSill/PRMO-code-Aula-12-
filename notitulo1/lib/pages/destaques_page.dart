@@ -14,6 +14,21 @@ class DestaquesPage extends StatefulWidget {
 class _DestaquesPageState extends State<DestaquesPage> {
   List<PacoteTuristico> lista = BD.getPacotesTuristicos();
 
+  PacoteTuristico destaque = PacoteTuristico(
+    imagem:
+    'https://a.cdn-hotels.com/gdcs/production97/d402/6baff29c-e43b-4caf-a9e8-5dcf1279dea0.jpg?impolicy=fcrop&w=800&h=533&q=medium',
+    titulo: 'Pacote Cancún 2022/2023',
+    transporte: 'Aéreo - Hotel All inclusive',
+    cidade: 'CANCÚN, MEX',
+    validade: 'De 10 ago 2021 até 30 set 2022',
+    desconto: 45,
+    numDiarias: 5,
+    numPessoas: 2,
+    numParcelas: 6,
+    precoAntigo: 6819,
+    precoAtual: 2819,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,6 +37,7 @@ class _DestaquesPageState extends State<DestaquesPage> {
           children: [
             buildContainerPropaganda(context),
             const SizedBox(height: 16),
+            buildContainerDestaque(context),
             buildListView()
           ],
         )
@@ -32,7 +48,7 @@ class _DestaquesPageState extends State<DestaquesPage> {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 0.45,
+        childAspectRatio: 0.42,
       ),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -41,6 +57,9 @@ class _DestaquesPageState extends State<DestaquesPage> {
         return CardPacoteTuristico(pacoteTuristico: lista[index]);
       },
     );
+  }
+  buildContainerDestaque(BuildContext context) {
+    return CardPacoteTuristico(pacoteTuristico: destaque);
   }
   buildContainerPropaganda(BuildContext context) {
     return Container(
